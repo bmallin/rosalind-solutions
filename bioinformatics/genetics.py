@@ -10,7 +10,7 @@ DNA_BASE_PAIR_COMPLEMENTS = {
 }
 
 
-RNA_CODON_TABLE = {
+RNA_CODON_TO_AMINO_ACID = {
     'UUU': 'F',
     'UUC': 'F',
     'UUA': 'L',
@@ -76,6 +76,13 @@ RNA_CODON_TABLE = {
     'GGA': 'G',
     'GGG': 'G'
 }
+
+AMINO_ACID_TO_RNA_CODON = {}
+for k, v in RNA_CODON_TO_AMINO_ACID.items():
+    if v not in AMINO_ACID_TO_RNA_CODON:
+        AMINO_ACID_TO_RNA_CODON[v] = []
+
+    AMINO_ACID_TO_RNA_CODON[v].append(k)
 
 
 def hamming_distance(a, b):

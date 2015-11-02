@@ -1,14 +1,14 @@
-from bioinformatics.genetics import RNA_CODON_TABLE
+from bioinformatics.genetics import RNA_CODON_TO_AMINO_ACID
 
 
 def rna_to_protein(rna_string):
     amino_acids = []
     for i in range(0, len(rna_string), 3):
         codon = rna_string[i:i + 3]
-        protein = RNA_CODON_TABLE[codon]
+        protein = RNA_CODON_TO_AMINO_ACID[codon]
 
         if not protein == 'Stop':
-            amino_acids.append(RNA_CODON_TABLE[codon])
+            amino_acids.append(RNA_CODON_TO_AMINO_ACID[codon])
 
     return ''.join(amino_acids)
 
