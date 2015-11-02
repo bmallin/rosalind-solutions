@@ -1,4 +1,3 @@
-import string
 from bioinformatics.genetics import RNA_CODON_TABLE
 
 

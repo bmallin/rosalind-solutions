@@ -1,4 +1,6 @@
 from collections import Counter
+from collections import OrderedDict
+
 
 DNA_BASE_PAIR_COMPLEMENTS = {
     'A': 'T',
@@ -90,20 +92,22 @@ def gc_content(dna_string):
 def parse_fasta(fasta_file):
     current_id = ''
     current_dna_string = ''
-    dna_strings = []
+    dna_strings = OrderedDict()
     for line in fasta_file:
         line = line.strip()
 
         if line.startswith('>'):
             if current_id:
-                dna_strings.append((current_id, current_dna_string))
+                dna_strings[current_id] = current_dna_string
+                # dna_strings.append((current_id, current_dna_string))
                 current_dna_string = ''
 
             current_id = line[1:]
         else:
             current_dna_string += line
 
-    dna_strings.append((current_id, current_dna_string))
+    # dna_strings.append((current_id, current_dna_string))
+    dna_strings[current_id] = current_dna_string
 
     return dna_strings
 
